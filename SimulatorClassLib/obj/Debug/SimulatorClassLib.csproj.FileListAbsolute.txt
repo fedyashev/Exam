@@ -1,0 +1,5 @@
+E:\workspace\C#\Homework\Exam\SimulatorClassLib\obj\Debug\SimulatorClassLib.csprojResolveAssemblyReference.cache
+E:\workspace\C#\Homework\Exam\SimulatorClassLib\bin\Debug\SimulatorClassLib.dll
+E:\workspace\C#\Homework\Exam\SimulatorClassLib\bin\Debug\SimulatorClassLib.pdb
+E:\workspace\C#\Homework\Exam\SimulatorClassLib\obj\Debug\SimulatorClassLib.dll
+E:\workspace\C#\Homework\Exam\SimulatorClassLib\obj\Debug\SimulatorClassLib.pdb

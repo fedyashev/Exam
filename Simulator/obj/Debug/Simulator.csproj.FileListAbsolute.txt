@@ -1,0 +1,8 @@
+E:\workspace\C#\Homework\Exam\Simulator\bin\Debug\Simulator.exe.config
+E:\workspace\C#\Homework\Exam\Simulator\bin\Debug\Simulator.exe
+E:\workspace\C#\Homework\Exam\Simulator\bin\Debug\Simulator.pdb
+E:\workspace\C#\Homework\Exam\Simulator\bin\Debug\SimulatorClassLib.dll
+E:\workspace\C#\Homework\Exam\Simulator\bin\Debug\SimulatorClassLib.pdb
+E:\workspace\C#\Homework\Exam\Simulator\obj\Debug\Simulator.csprojResolveAssemblyReference.cache
+E:\workspace\C#\Homework\Exam\Simulator\obj\Debug\Simulator.exe
+E:\workspace\C#\Homework\Exam\Simulator\obj\Debug\Simulator.pdb
