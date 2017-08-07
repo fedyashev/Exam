@@ -101,7 +101,7 @@ namespace SimulatorClassLib
         public override void OnIncreaseHeight()
         {
             if (Dispatchers.Count < AirplainSimulator.DispatchersMinCount) throw new AirplainFlyException(String.Format("Dispatchers count less than {0}.", AirplainSimulator.DispatchersMinCount));
-            if (Model.Speed <= 0) throw new Exception("Incorrect increase height operation.");
+            if (Model.Speed <= 0) throw new AirplainFlyException("Incorrect increase height operation.");
             base.OnIncreaseHeight();
         }
 
@@ -111,7 +111,7 @@ namespace SimulatorClassLib
         public override void OnDecreaseHeight()
         {
             if (Dispatchers.Count < AirplainSimulator.DispatchersMinCount) throw new AirplainFlyException(String.Format("Dispatchers count less than {0}.", AirplainSimulator.DispatchersMinCount));
-            if (Model.Speed <= 0) throw new Exception("Incorrect decrease height operataion.");
+            if (Model.Speed <= 0) throw new AirplainFlyException("Incorrect decrease height operataion.");
             base.OnDecreaseHeight();
         }
 
@@ -139,7 +139,7 @@ namespace SimulatorClassLib
         public override void OnTurboIncreaseHeight()
         {
             if (Dispatchers.Count < AirplainSimulator.DispatchersMinCount) throw new AirplainFlyException(String.Format("Dispatchers count less than {0}.", AirplainSimulator.DispatchersMinCount));
-            if (Model.Speed <= 0) throw new Exception("Incorrect turbo increase height operation.");
+            if (Model.Speed <= 0) throw new AirplainFlyException("Incorrect turbo increase height operation.");
             base.OnTurboIncreaseHeight();
         }
 
@@ -149,7 +149,7 @@ namespace SimulatorClassLib
         public override void OnTurboDecreaseHeight()
         {
             if (Dispatchers.Count < AirplainSimulator.DispatchersMinCount) throw new AirplainFlyException(String.Format("Dispatchers count less than {0}.", AirplainSimulator.DispatchersMinCount));
-            if (Model.Speed <= 0) throw new Exception("Incorrect turbo decrease height operation.");
+            if (Model.Speed <= 0) throw new AirplainFlyException("Incorrect turbo decrease height operation.");
             base.OnTurboDecreaseHeight();
         }
 
