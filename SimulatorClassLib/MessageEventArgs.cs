@@ -6,10 +6,19 @@ using System.Threading.Tasks;
 
 namespace SimulatorClassLib
 {
+    /// <summary>
+    /// Message event arguments.
+    /// </summary>
     public class MessageEventArgs : EventArgs
     {
+        /// <summary>
+        /// Message.
+        /// </summary>
         private string _message;
 
+        /// <summary>
+        /// Message.
+        /// </summary>
         public string Message
         {
             get
@@ -23,6 +32,10 @@ namespace SimulatorClassLib
             }
         }
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="message">Message.</param>
         public MessageEventArgs(string message)
         {
             this._message = message;

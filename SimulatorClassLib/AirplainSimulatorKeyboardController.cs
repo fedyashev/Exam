@@ -6,8 +6,16 @@ using System.Threading.Tasks;
 
 namespace SimulatorClassLib
 {
+    /// <summary>
+    /// Airplain keyboard controllesr.
+    /// </summary>
     public class AirplainSimulatorKeyboardController : IControllable
     {
+        /// <summary>
+        /// Get control key action number.
+        /// </summary>
+        /// <param name="keyStr">String with control key.</param>
+        /// <returns>Number of control action.</returns>
         private int GetKey(string keyStr)
         {
             switch (keyStr)
@@ -28,6 +36,10 @@ namespace SimulatorClassLib
             }
         }
 
+        /// <summary>
+        /// Get control action number.
+        /// </summary>
+        /// <returns>Number of action.</returns>
         public int GetControlAction()
         {
             var key = Console.ReadKey(true);

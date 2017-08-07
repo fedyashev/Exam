@@ -7,21 +7,21 @@ namespace SimulatorClassLib
     /// Airplain crash exception.
     /// </summary>
     [Serializable]
-    internal class DispatcherAirplainCrashException : Exception
+    internal class AirplainCrashException : Exception
     {
-        public DispatcherAirplainCrashException()
+        public AirplainCrashException()
         {
         }
 
-        public DispatcherAirplainCrashException(string message) : base(message)
+        public AirplainCrashException(string message) : base(message)
         {
         }
 
-        public DispatcherAirplainCrashException(string message, Exception innerException) : base(message, innerException)
+        public AirplainCrashException(string message, Exception innerException) : base(message, innerException)
         {
         }
 
-        protected DispatcherAirplainCrashException(SerializationInfo info, StreamingContext context) : base(info, context)
+        protected AirplainCrashException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }

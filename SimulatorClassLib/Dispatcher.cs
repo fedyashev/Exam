@@ -8,18 +8,44 @@ using System.Threading.Tasks;
 namespace SimulatorClassLib
 {
     /// <summary>
-    /// 
+    /// Class Dispatcher control flying object in the fly.
     /// </summary>
     [Serializable]
     public class Dispatcher
     {
+        /// <summary>
+        /// Dispatcher name.
+        /// </summary>
         private string _name;
+
+        /// <summary>
+        /// Weather correction value.
+        /// </summary>
         private int _weatherCorrection;
+
+        /// <summary>
+        /// Recommended height.
+        /// </summary>
         private int _recommendedHeight;
+
+        /// <summary>
+        /// Max object speed.
+        /// </summary>
         private int _maxObjectSpeed;
+
+        /// <summary>
+        /// Min controlled object speed.
+        /// </summary>
         private const int  minControlledSpeed = 50;
 
+        /// <summary>
+        /// Send message event.
+        /// </summary>
         public event EventHandler SendMessage;
+
+        /// <summary>
+        /// Add penalty points event.
+        /// </summary>
         public event EventHandler AddPenaltyPoints;
 
         /// <summary>
@@ -99,19 +125,8 @@ namespace SimulatorClassLib
 
             private set
             {
-                try
-                {
-                    if (value <= 0) throw new ArgumentException();
-                }
-                catch (ArgumentException ex)
-                {
-                    throw new DispatcherMaxObjectSpeedException("Incorrect max object speed.", ex);
-                }
-                catch (Exception ex)
-                {
-                    throw new DispatcherMaxObjectSpeedException("Unknow exception.", ex);
-                }
-                this._maxObjectSpeed = value;
+                if (value <= 0) throw new ArgumentException();
+                _maxObjectSpeed = value;
             }
         }
 
@@ -124,7 +139,7 @@ namespace SimulatorClassLib
         {
             try
             {
-                if (sender == null || args == null) throw new ArgumentNullException();
+                if (sender == null || args == null) throw new NullReferenceException();
                 if (sender as AbstructSimulator == null) throw new InvalidCastException();
                 var penaltyPoints = 0;
                 var simulator = (AbstructSimulator)sender;
@@ -159,7 +174,7 @@ namespace SimulatorClassLib
                 }
                 RecommendedHeight = CalculateRecommendedHeight(model);
             }
-            catch (ArgumentNullException ex)
+            catch (NullReferenceException ex)
             {
                 throw new DispatcherChangeStateException("Dispatcher change state handler parameters is null.", ex);
             }
@@ -174,10 +189,6 @@ namespace SimulatorClassLib
             catch (AirplainCrashException ex)
             {
                 throw new DispatcherChangeStateException("Airplain crash.", ex);
-            }
-            catch (Exception ex)
-            {
-                throw new DispatcherChangeStateException("Unknow exception.", ex);
             }
         }
 

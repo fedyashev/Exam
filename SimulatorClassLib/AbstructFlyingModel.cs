@@ -100,10 +100,6 @@ namespace SimulatorClassLib
                 {
                     throw new ModelNameException("Name string is empty.", ex);
                 }
-                catch (Exception ex)
-                {
-                    throw new ModelNameException("Unknow exception.", ex);
-                }
             }
         }
 
@@ -144,10 +140,6 @@ namespace SimulatorClassLib
             {
                 throw new ModelIncreaseSpeedException("Incorrect speed value.", ex);
             }
-            catch (Exception ex)
-            {
-                throw new ModelIncreaseSpeedException("Unknow exception.", ex);
-            }
         }
 
         /// <summary>
@@ -172,10 +164,6 @@ namespace SimulatorClassLib
             catch (ModelSpeedException ex)
             {
                 throw new ModelDecreaseSpeedException("Incorrect speed value.", ex);
-            }
-            catch (Exception ex)
-            {
-                throw new ModelDecreaseSpeedException("Unknow exception.", ex);
             }
         }
 
@@ -202,10 +190,6 @@ namespace SimulatorClassLib
             {
                 throw new ModelIncreaseHeightException("Incorrect height value.", ex);
             }
-            catch (Exception ex)
-            {
-                throw new ModelIncreaseHeightException("Unknow exception.", ex);
-            }
         }
 
         /// <summary>
@@ -230,10 +214,6 @@ namespace SimulatorClassLib
             catch (ModelHeightException ex)
             {
                 throw new ModelDecreaseHeightException("Incorrect height value.", ex);
-            }
-            catch (Exception ex)
-            {
-                throw new ModelDecreaseHeightException("Unknow exception.", ex);
             }
         }
 
@@ -260,10 +240,6 @@ namespace SimulatorClassLib
             {
                 throw new ModelTurboIncreaseSpeedException("Incorrect speed value.", ex);
             }
-            catch (Exception ex)
-            {
-                throw new ModelTurboIncreaseSpeedException("Unknow exception.", ex);
-            }
         }
 
         /// <summary>
@@ -288,10 +264,6 @@ namespace SimulatorClassLib
             catch (ModelSpeedException ex)
             {
                 throw new ModelTurboDecreaseSpeedException("Incorrect speed value.", ex);
-            }
-            catch (Exception ex)
-            {
-                throw new ModelTurboDecreaseSpeedException("Unknow exception.", ex);
             }
         }
 
@@ -318,10 +290,6 @@ namespace SimulatorClassLib
             {
                 throw new ModelTurboIncreaseHeightException("Incorrect height value.", ex);
             }
-            catch (Exception ex)
-            {
-                throw new ModelTurboIncreaseHeightException("Unknow exception.", ex);
-            }
         }
 
         /// <summary>
@@ -346,10 +314,6 @@ namespace SimulatorClassLib
             catch (ModelHeightException ex)
             {
                 throw new ModelTurboDecreaseHeightException("Incorrect height value.", ex);
-            }
-            catch (Exception ex)
-            {
-                throw new ModelTurboDecreaseHeightException("Unknow exception.", ex);
             }
         }
     }

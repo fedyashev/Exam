@@ -11,38 +11,145 @@ namespace SimulatorClassLib
     /// </summary>
     public abstract class AbstructSimulator
     {
+        /// <summary>
+        /// Flying model.
+        /// </summary>
         private AbstructFlyingModel _model;
+
+        /// <summary>
+        /// Simulator view.
+        /// </summary>
         private IVieweble _view;
+
+        /// <summary>
+        /// Simulation program.
+        /// </summary>
         private AbstractSimulationProgram _program;
+
+        /// <summary>
+        /// Simulator controller.
+        /// </summary>
         private IControllable _controller;
 
+        /// <summary>
+        /// Model increase / decrease delta speed.
+        /// </summary>
         private int _deltaSpeed;
+
+        /// <summary>
+        /// Model turbo increase / decrease delta speed.
+        /// </summary>
         private int _deltaTurboSpeed;
+
+        /// <summary>
+        /// Model increase / decrease delta height.
+        /// </summary>
         private int _deltaHeight;
+
+        /// <summary>
+        /// Model turbo increase / decrease delta height.
+        /// </summary>
         private int _deltaTurboHeight;
 
+        /// <summary>
+        /// Penatly points.
+        /// </summary>
         private int _penaltyPoints;
+
+        /// <summary>
+        /// Maximal count of penalty points.
+        /// </summary>
         private int _maxPenaltyPoints;
 
+        /// <summary>
+        /// Actions distionary.
+        /// </summary>
         private Dictionary<int, Action> _actions;
+
+        /// <summary>
+        /// Simulation flag.
+        /// </summary>
         private bool _isSimulation;
 
+        /// <summary>
+        /// Increase speed event.
+        /// </summary>
         public event EventHandler IncreaseSpeed;
+
+        /// <summary>
+        /// Decrease speed event.
+        /// </summary>
         public event EventHandler DecreaseSpeed;
+
+        /// <summary>
+        /// Increase height event.
+        /// </summary>
         public event EventHandler IncreaseHeight;
+
+        /// <summary>
+        /// Decrease height event.
+        /// </summary>
         public event EventHandler DecreaseHeight;
+
+        /// <summary>
+        /// Turbo increase speed event.
+        /// </summary>
         public event EventHandler TurboIncreaseSpeed;
+
+        /// <summary>
+        /// Turbo decrease speed event.
+        /// </summary>
         public event EventHandler TurboDecreaseSpeed;
+
+        /// <summary>
+        /// Turbo increase height event.
+        /// </summary>
         public event EventHandler TurboIncreaseHeight;
+
+        /// <summary>
+        /// Turbo decrease height event.
+        /// </summary>
         public event EventHandler TurboDecreaseHeight;
+
+        /// <summary>
+        /// Start new simulation event.
+        /// </summary>
         public event EventHandler StartNewSimulation;
+
+        /// <summary>
+        /// Exit simualtion event.
+        /// </summary>
         public event EventHandler ExitSimulation;
+
+        /// <summary>
+        /// Success simulaition event.
+        /// </summary>
         public event EventHandler SuccessSimulation;
+
+        /// <summary>
+        /// Fail simulation event.
+        /// </summary>
         public event EventHandler FailSimulation;
+
+        /// <summary>
+        /// Simulator error virtual event.
+        /// </summary>
         public virtual event EventHandler Error;
+
+        /// <summary>
+        /// Change simulator state event.
+        /// </summary>
         public event EventHandler ChangeState;
+
+        /// <summary>
+        /// Change simulator penalty points event.
+        /// </summary>
         public event EventHandler ChangePenaltyPoints;
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="maxPenaltyPoints">Maximal count of penalty points.</param>
         public AbstructSimulator(int maxPenaltyPoints)
         {
             this.MaxPenaltyPoints = maxPenaltyPoints;
@@ -60,7 +167,7 @@ namespace SimulatorClassLib
 
             set
             {
-                if (value == null) throw new Exception("Incorrect flying model.");
+                if (value == null) throw new NullReferenceException("Model reference is null.");
                 this._model = value;
             }
         }
@@ -77,11 +184,14 @@ namespace SimulatorClassLib
 
             set
             {
-                if (value == null) throw new Exception("Incorrect flying simulator viewer.");
+                if (value == null) throw new NullReferenceException("View reference is null.");
                 this._view = value;
             }
         }
 
+        /// <summary>
+        /// Simulation program.
+        /// </summary>
         public AbstractSimulationProgram Program
         {
             get
@@ -91,10 +201,14 @@ namespace SimulatorClassLib
 
             set
             {
+                if (value == null) throw new NullReferenceException("Program reference is null.");
                 _program = value;
             }
         }
 
+        /// <summary>
+        /// Simulator controller.
+        /// </summary>
         public IControllable Controller
         {
             get
@@ -104,10 +218,14 @@ namespace SimulatorClassLib
 
             set
             {
+                if (value == null) throw new NullReferenceException("Controller reference is null.");
                 _controller = value;
             }
         }
 
+        /// <summary>
+        /// Model increase / decrease speed delta.
+        /// </summary>
         public int DeltaSpeed
         {
             get
@@ -121,6 +239,9 @@ namespace SimulatorClassLib
             }
         }
 
+        /// <summary>
+        /// Model turbo increase / decrease speed delta.
+        /// </summary>
         public int DeltaTurboSpeed
         {
             get
@@ -134,6 +255,9 @@ namespace SimulatorClassLib
             }
         }
 
+        /// <summary>
+        /// Model increase / decrease height delta.
+        /// </summary>
         public int DeltaHeight
         {
             get
@@ -147,6 +271,9 @@ namespace SimulatorClassLib
             }
         }
 
+        /// <summary>
+        /// Model turbo increase / decrease height delta.
+        /// </summary>
         public int DeltaTurboHeight
         {
             get
@@ -160,6 +287,9 @@ namespace SimulatorClassLib
             }
         }
 
+        /// <summary>
+        /// Actions dictionary.
+        /// </summary>
         public Dictionary<int, Action> Actions
         {
             get
@@ -169,10 +299,14 @@ namespace SimulatorClassLib
 
             set
             {
+                if (value == null) throw new NullReferenceException("Actions reference is null.");
                 this._actions = value;
             }
         }
 
+        /// <summary>
+        /// Simulation flag.
+        /// </summary>
         public bool IsSimulation
         {
             get
@@ -186,6 +320,9 @@ namespace SimulatorClassLib
             }
         }
 
+        /// <summary>
+        /// Penalty points.
+        /// </summary>
         public int PenaltyPoints
         {
             get
@@ -195,10 +332,14 @@ namespace SimulatorClassLib
 
             set
             {
+                if (value < 0) throw new SimulatorPenaltyPointsException("Incorrect penalty points value.");
                 this._penaltyPoints = value;
             }
         }
 
+        /// <summary>
+        /// Maximal count of penalty points.
+        /// </summary>
         public int MaxPenaltyPoints
         {
             get
@@ -208,58 +349,86 @@ namespace SimulatorClassLib
 
             protected set
             {
+                if (value < 0) throw new SimulatorMaxPenaltyPointsException("Incorrect max penalty points value.");
                 this._maxPenaltyPoints = value;
             }
         }
 
+        /// <summary>
+        /// Increase speed event invoker.
+        /// </summary>
         public virtual void OnIncreseSpeed()
         {
             if (IncreaseSpeed != null)
                 IncreaseSpeed(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Decrease speed event invoker.
+        /// </summary>
         public virtual void OnDecreaseSpeed()
         {
             if (DecreaseSpeed != null)
                 DecreaseSpeed(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Increase height event invoker.
+        /// </summary>
         public virtual void OnIncreaseHeight()
         {
             if (IncreaseHeight != null)
                 IncreaseHeight(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Decrease height event invoker.
+        /// </summary>
         public virtual void OnDecreaseHeight()
         {
             if (DecreaseHeight != null)
                 DecreaseHeight(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Turbo increase speed event invoker.
+        /// </summary>
         public virtual void OnTurboIncreaseSpeed()
         {
             if (TurboIncreaseSpeed != null)
                 TurboIncreaseSpeed(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Turbo decrease speed event invoker.
+        /// </summary>
         public virtual void OnTurboDecreaseSpeed()
         {
             if (TurboDecreaseSpeed != null)
                 TurboDecreaseSpeed(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Turbo increase height event invoker.
+        /// </summary>
         public virtual void OnTurboIncreaseHeight()
         {
             if (TurboIncreaseHeight != null)
                 TurboIncreaseHeight(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Turbo decrease height event invoker.
+        /// </summary>
         public virtual void OnTurboDecreaseHeight()
         {
             if (TurboDecreaseHeight != null)
                 TurboDecreaseHeight(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Start simulator event invoker.
+        /// </summary>
         public virtual void OnStartNewSimulation()
         {
             Model.Height = 0;
@@ -269,6 +438,9 @@ namespace SimulatorClassLib
                 StartNewSimulation(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Exit simulator event invoker.
+        /// </summary>
         public virtual void OnExitSimulation()
         {
             IsSimulation = false;
@@ -276,6 +448,9 @@ namespace SimulatorClassLib
                 ExitSimulation(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Success simulation event invoker.
+        /// </summary>
         public virtual void OnSuccessSimulation()
         {
             IsSimulation = false;
@@ -283,6 +458,9 @@ namespace SimulatorClassLib
                 SuccessSimulation(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Fail simulation event invoker.
+        /// </summary>
         public virtual void OnFailSimulation()
         {
             IsSimulation = false;
@@ -290,31 +468,61 @@ namespace SimulatorClassLib
                 FailSimulation(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Error event invoker.
+        /// </summary>
         public virtual void OnError()
         {
             if (Error != null)
                 Error(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Change state event invoker.
+        /// </summary>
         public virtual void OnChangeState()
         {
             if (ChangeState != null)
                 ChangeState(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Change penalty points event invoker.
+        /// </summary>
         public virtual void OnChangePenaltyPoints()
         {
             if (ChangePenaltyPoints != null)
                 ChangePenaltyPoints(this, EventArgs.Empty);
         }
 
+        /// <summary>
+        /// Add penatly points event handler.
+        /// </summary>
+        /// <param name="sender">Object than invoke event.</param>
+        /// <param name="e">Event arguments.</param>
         public virtual void AddPenaltyPointsHandler(object sender, EventArgs e)
         {
-            var args = (PenaltyPointsEventArgs)e;
-            PenaltyPoints += args.PenaltyPoints;
-            OnChangePenaltyPoints();
+            try
+            {
+                if (e == null) throw new NullReferenceException();
+                if (e as PenaltyPointsEventArgs == null) throw new InvalidCastException();
+                var args = (PenaltyPointsEventArgs)e;
+                PenaltyPoints += args.PenaltyPoints;
+                OnChangePenaltyPoints();
+            }
+            catch (NullReferenceException ex)
+            {
+                throw new AddPenaltyPointsException("Event agruments reference is null.", ex);
+            }
+            catch (InvalidCastException ex)
+            {
+                throw new AddPenaltyPointsException("Incompatible type of event arguments.", ex);
+            }
         }
 
+        /// <summary>
+        /// Initialize aciton dictionary.
+        /// </summary>
         public virtual void InitializeActionDictionary()
         {
             Actions = new Dictionary<int, Action>();
@@ -330,6 +538,9 @@ namespace SimulatorClassLib
             Actions.Add(SimulatorControls.turboIncreaseSpeed, OnTurboIncreaseSpeed);
         }
 
+        /// <summary>
+        /// Subscribe handlers to events.
+        /// </summary>
         public virtual void InitializeHandlers()
         {
             IncreaseSpeed += Model.IncreaseSpeedHandler;
@@ -367,6 +578,9 @@ namespace SimulatorClassLib
 
         }
 
+        /// <summary>
+        /// Run simulation.
+        /// </summary>
         public virtual void Run()
         {
             OnStartNewSimulation();

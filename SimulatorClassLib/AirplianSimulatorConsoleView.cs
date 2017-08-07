@@ -6,11 +6,25 @@ using System.Threading.Tasks;
 
 namespace SimulatorClassLib
 {
+    /// <summary>
+    /// Console view airplain simulator.
+    /// </summary>
     public class AirplianSimulatorConsoleView : IVieweble
     {
+        /// <summary>
+        /// Cursor left position.
+        /// </summary>
         private int _cursorLeft;
+
+        /// <summary>
+        /// Cursor top position.
+        /// </summary>
         private int _cursorTop;
 
+        /// <summary>
+        /// Print dispatcher list.
+        /// </summary>
+        /// <param name="simulator"></param>
         private void PrintDispatcherList(AirplainSimulator simulator)
         {
             if (simulator.Dispatchers.Any())
@@ -27,17 +41,29 @@ namespace SimulatorClassLib
             
         }
 
+        /// <summary>
+        /// Print penalty points.
+        /// </summary>
+        /// <param name="simulator"></param>
         private void PrintPenaltyPoints(AbstructSimulator simulator)
         {
             Console.WriteLine("Penalty points: {0}/{1}", simulator.PenaltyPoints, simulator.MaxPenaltyPoints);
         }
 
+        /// <summary>
+        /// Print model.
+        /// </summary>
+        /// <param name="simulator"></param>
         private void PrintModel(AbstructSimulator simulator)
         {
             Console.WriteLine(simulator.Model);
         }
 
-        private void PrintMenu(object sender, EventArgs e)
+        /// <summary>
+        /// Print menu.
+        /// </summary>
+        /// <param name="sender">Simulator object.</param>
+        private void PrintMenu(object sender)
         {
             Console.Clear();
             var simulator = (AirplainSimulator)sender;
@@ -58,16 +84,28 @@ namespace SimulatorClassLib
             Console.WriteLine();
         }
 
-        private void CommonHandler(object sender, EventArgs e, Action<object, EventArgs> menu, Action action)
+        /// <summary>
+        /// Common event handler.
+        /// </summary>
+        /// <param name="sender">Object that invoke event.</param>
+        /// <param name="e">Event argumets.</param>
+        /// <param name="menu">Print menu action.</param>
+        /// <param name="action">Action.</param>
+        private void CommonHandler(object sender, EventArgs e, Action<object> menu, Action action)
         {
-            if (sender == null) throw new Exception("Sender reference is null.");
-            if (e == null) throw new Exception("Event arguments reference is null.");
-            if (action == null) throw new Exception("Action reference is null.");
-            if (sender as AbstructSimulator == null) throw new Exception("Sender incompatible type.");
-            if (menu != null) menu(sender, e);
-            action();
+            if (sender == null) throw new NullReferenceException("Sender reference is null.");
+            if (e == null) throw new NullReferenceException("Event arguments reference is null.");
+            //if (action == null) throw new NullReferenceException("Action reference is null.");
+            if (sender as AbstructSimulator == null) throw new InvalidCastException("Sender incompatible type.");
+            if (menu != null) menu(sender);
+            if (action != null) action();
         }
 
+        /// <summary>
+        /// Decrease height handler.
+        /// </summary>
+        /// <param name="sender">Event invoker object.</param>
+        /// <param name="e">Event arguments.</param>
         public void DecreaseHeightHandler(object sender, EventArgs e)
         {
             CommonHandler(sender, e, PrintMenu, () =>
@@ -77,6 +115,11 @@ namespace SimulatorClassLib
             });
         }
 
+        /// <summary>
+        /// Decrease speed handler.
+        /// </summary>
+        /// <param name="sender">Event invoker object.</param>
+        /// <param name="e">Event arguments.</param>
         public void DecreaseSpeedHandler(object sender, EventArgs e)
         {
             CommonHandler(sender, e, PrintMenu, () =>
@@ -85,7 +128,12 @@ namespace SimulatorClassLib
                 Console.WriteLine("Airplain {0} decrease speed by {1} km/h.", simulator.Model.Name, simulator.DeltaSpeed);
             });
         }
-           
+        
+        /// <summary>
+        /// Error handler.
+        /// </summary>
+        /// <param name="sender">Event invoker object.</param>
+        /// <param name="e">Event arguments.</param>
         public void ErrorHandler(object sender, EventArgs e)
         {
             CommonHandler(sender, e, PrintMenu, () =>
@@ -95,6 +143,11 @@ namespace SimulatorClassLib
             });
         }
 
+        /// <summary>
+        /// Exit simulation handler.
+        /// </summary>
+        /// <param name="sender">Event invoker object.</param>
+        /// <param name="e">Event arguments.</param>
         public void ExitSimulationHandler(object sender, EventArgs e)
         {
             CommonHandler(sender, e, null, () =>
@@ -103,6 +156,11 @@ namespace SimulatorClassLib
             });
         }
 
+        /// <summary>
+        /// Fail simulation handler.
+        /// </summary>
+        /// <param name="sender">Event invoker object.</param>
+        /// <param name="e">Event arguments.</param>
         public void FailSimulationHandler(object sender, EventArgs e)
         {
             CommonHandler(sender, e, null, () =>
@@ -111,6 +169,11 @@ namespace SimulatorClassLib
             });
         }
 
+        /// <summary>
+        /// Increase height handler.
+        /// </summary>
+        /// <param name="sender">Event invoker object.</param>
+        /// <param name="e">Event argumets.</param>
         public void IncreaseHeightHandler(object sender, EventArgs e)
         {
             CommonHandler(sender, e, PrintMenu, () =>
@@ -120,6 +183,11 @@ namespace SimulatorClassLib
             });
         }
 
+        /// <summary>
+        /// Increase speed handler.
+        /// </summary>
+        /// <param name="sender">Event invoker object.</param>
+        /// <param name="e">Event arguments.</param>
         public void IncreaseSpeedHandler(object sender, EventArgs e)
         {
             CommonHandler(sender, e, PrintMenu, () =>
@@ -129,6 +197,11 @@ namespace SimulatorClassLib
             });
         }
 
+        /// <summary>
+        /// Start new simulation handler.
+        /// </summary>
+        /// <param name="sender">Event invoker object.</param>
+        /// <param name="e">Event arguments.</param>
         public void StartNewSimulationHandler(object sender, EventArgs e)
         {
             CommonHandler(sender, e, PrintMenu, () =>
@@ -137,6 +210,11 @@ namespace SimulatorClassLib
             });
         }
 
+        /// <summary>
+        /// Success simulation handler.
+        /// </summary>
+        /// <param name="sender">Event invoker object.</param>
+        /// <param name="e">Event arguments.</param>
         public void SuccessSimulationHandler(object sender, EventArgs e)
         {
             CommonHandler(sender, e, null, () =>
@@ -144,7 +222,12 @@ namespace SimulatorClassLib
                 Console.WriteLine("Simulation success.");
             });
         }
-
+        
+        /// <summary>
+        /// Turbo decrease height handler.
+        /// </summary>
+        /// <param name="sender">Event invoker object.</param>
+        /// <param name="e">Event arguments.</param>
         public void TurboDecreaseHeightHandler(object sender, EventArgs e)
         {
             CommonHandler(sender, e, PrintMenu, () =>
@@ -154,6 +237,11 @@ namespace SimulatorClassLib
             });
         }
 
+        /// <summary>
+        /// Turbo decrease speed handler.
+        /// </summary>
+        /// <param name="sender">Event invoker object.</param>
+        /// <param name="e">Event arguments.</param>
         public void TurboDecreaseSpeedHandler(object sender, EventArgs e)
         {
             CommonHandler(sender, e, PrintMenu, () =>
@@ -163,6 +251,11 @@ namespace SimulatorClassLib
             });
         }
 
+        /// <summary>
+        /// Turbo increase height handler.
+        /// </summary>
+        /// <param name="sender">Event invoker arguments.</param>
+        /// <param name="e">Event arguments.</param>
         public void TurboIncreaseHeightHandler(object sender, EventArgs e)
         {
             CommonHandler(sender, e, PrintMenu, () =>
@@ -172,6 +265,11 @@ namespace SimulatorClassLib
             });
         }
 
+        /// <summary>
+        /// Turbo increase speed handler.
+        /// </summary>
+        /// <param name="sender">Event invoker object.</param>
+        /// <param name="e">Event arguments.</param>
         public void TurboIncreaseSpeedHandler(object sender, EventArgs e)
         {
             CommonHandler(sender, e, PrintMenu, () =>
@@ -181,12 +279,22 @@ namespace SimulatorClassLib
             });
         }
 
+        /// <summary>
+        /// Print message handler.
+        /// </summary>
+        /// <param name="sender">Event invoker object.</param>
+        /// <param name="e">Event argumets.</param>
         public void PrintMessageHandler(object sender, EventArgs e)
         {
             var args = (MessageEventArgs)e;
             Console.WriteLine(args.Message);
         }
 
+        /// <summary>
+        /// Change penalty points handler.
+        /// </summary>
+        /// <param name="sender">Event </param>
+        /// <param name="e"></param>
         public void ChangePenaltyPointsHandler(object sender, EventArgs e)
         {
             CommonHandler(sender, e, null, () =>
@@ -202,6 +310,11 @@ namespace SimulatorClassLib
             });
         }
 
+        /// <summary>
+        /// Refresh view handler.
+        /// </summary>
+        /// <param name="sender">Event invoker object.</param>
+        /// <param name="e">Event argumets.</param>
         public void RefreshViewHandler(object sender, EventArgs e)
         {
             CommonHandler(sender, e, PrintMenu, () => { });
@@ -209,6 +322,11 @@ namespace SimulatorClassLib
 
         // Additional event handlers
 
+        /// <summary>
+        /// Add dispatcher handler.
+        /// </summary>
+        /// <param name="sender">Event invoker object.</param>
+        /// <param name="e">Event argumets.</param>
         public void AddDispatcher(object sender, EventArgs e)
         {
             CommonHandler(sender, e, PrintMenu, () =>
@@ -227,6 +345,11 @@ namespace SimulatorClassLib
             });
         }
 
+        /// <summary>
+        /// Remove dispatcher handler.
+        /// </summary>
+        /// <param name="sender">Event invoker object.</param>
+        /// <param name="e">Event argumets.</param>
         public void RemoveDispatcher(object sender, EventArgs e)
         {
             CommonHandler(sender, e, PrintMenu, () =>
@@ -245,6 +368,5 @@ namespace SimulatorClassLib
                 RefreshViewHandler(sender, e);
             });
         }
-
     }
 }

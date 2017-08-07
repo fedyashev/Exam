@@ -6,10 +6,19 @@ using System.Threading.Tasks;
 
 namespace SimulatorClassLib
 {
+    /// <summary>
+    /// Penalty points event argument.
+    /// </summary>
     public class PenaltyPointsEventArgs : EventArgs
     {
+        /// <summary>
+        /// Penalty points.
+        /// </summary>
         private int _penaltyPoints;
 
+        /// <summary>
+        /// Penalty points.
+        /// </summary>
         public int PenaltyPoints
         {
             get
@@ -23,6 +32,10 @@ namespace SimulatorClassLib
             }
         }
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="penaltyPoints">Penalty points.</param>
         public PenaltyPointsEventArgs(int penaltyPoints)
         {
             this.PenaltyPoints = penaltyPoints;
