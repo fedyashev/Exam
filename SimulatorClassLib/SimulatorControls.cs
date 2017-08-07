@@ -21,7 +21,9 @@ namespace SimulatorClassLib
         /// </summary>
         public const int increaseSpeed = 0;
 
-        //Decrease spees action control.
+        /// <summary>
+        ///Decrease spees action control.
+        /// </summary>
         public const int decreaseSpeed = 1;
 
         /// <summary>
