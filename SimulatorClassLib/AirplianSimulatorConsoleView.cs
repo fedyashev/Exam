@@ -95,7 +95,6 @@ namespace SimulatorClassLib
         {
             if (sender == null) throw new NullReferenceException("Sender reference is null.");
             if (e == null) throw new NullReferenceException("Event arguments reference is null.");
-            //if (action == null) throw new NullReferenceException("Action reference is null.");
             if (sender as AbstructSimulator == null) throw new InvalidCastException("Sender incompatible type.");
             if (menu != null) menu(sender);
             if (action != null) action();
