@@ -333,9 +333,8 @@ namespace SimulatorClassLib
                 var simulator = (AirplainSimulator)sender;
                 Console.Write("Enter new dispatcher name: ");
                 var name = Console.ReadLine().Trim();
-                if (!name.Any()) throw new Exception("Incorrect dispatcher name.");
-                if (simulator.Dispatchers.Any() && simulator.Dispatchers.Find(p => p.Name == name) != null)
-                    throw new Exception("Dispatcher with this name is already exists.");
+                if (!name.Any()) throw new DispatcherNameException("Incorrect dispatcher name.");
+                if (simulator.Dispatchers.Any() && simulator.Dispatchers.Find(p => p.Name == name) != null) throw new DispatcherCountException("Dispatcher with this name is already exists.");
                 var dispatcher = new Dispatcher(name, AirplainSimulator.MaxSpeed);
                 if (simulator.Model.Speed > 0) dispatcher.CalculateRecommendedHeight(simulator.Model);
                 simulator.SubscribeDispatcher(dispatcher);
@@ -354,14 +353,14 @@ namespace SimulatorClassLib
             CommonHandler(sender, e, PrintMenu, () =>
             {
                 var simulator = (AirplainSimulator)sender;
-                if (!simulator.Dispatchers.Any()) throw new Exception("Dispatcher list is empty.");
+                if (!simulator.Dispatchers.Any()) throw new DispatcherCountException("Dispatcher list is empty.");
                 if (simulator.Model.Speed > 0 && simulator.Dispatchers.Count <= AirplainSimulator.DispatchersMinCount)
-                    throw new Exception(String.Format("Airplain can\'t have less then {0} dispatchers in the fly.", AirplainSimulator.DispatchersMinCount));
+                    throw new DispatcherCountException(String.Format("Airplain can\'t have less then {0} dispatchers in the fly.", AirplainSimulator.DispatchersMinCount));
                 Console.Write("Enter deletable dispatcher name: ");
                 var name = Console.ReadLine().Trim();
-                if (!name.Any()) throw new Exception("Incorrect dispatcher name.");
+                if (!name.Any()) throw new DispatcherNameException("Incorrect dispatcher name.");
                 var dispatcher = simulator.Dispatchers.Find(p => p.Name == name);
-                if (dispatcher == null) throw new Exception("Not found dispatcher with this name in dispatcher list.");
+                if (dispatcher == null) throw new NullReferenceException("Not found dispatcher with this name in dispatcher list.");
                 simulator.UnsubscribeDispatcher(dispatcher);
                 simulator.Dispatchers.Remove(dispatcher);
                 RefreshViewHandler(sender, e);
