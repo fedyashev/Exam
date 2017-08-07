@@ -43,18 +43,25 @@
     <Compile Include="AbstractSimulationProgram.cs" />
     <Compile Include="AbstructFlyingModel.cs" />
     <Compile Include="AbstructSimulator.cs" />
+    <Compile Include="AddPenaltyPointsException.cs" />
     <Compile Include="Airplain.cs" />
-    <Compile Include="DispatcherAirplainCrashException.cs" />
+    <Compile Include="AirplainCrashException.cs" />
+    <Compile Include="AirplainFlyException.cs" />
     <Compile Include="AirplainSimulationProgram.cs" />
     <Compile Include="AirplainSimulatorControls.cs" />
     <Compile Include="AirplianSimulatorConsoleView.cs" />
     <Compile Include="Dispatcher.cs" />
+    <Compile Include="DispatcherChangeStateException.cs" />
+    <Compile Include="DispatcherException.cs" />
+    <Compile Include="DispatcherMaxObjectSpeedException.cs" />
+    <Compile Include="DispatcherNameException.cs" />
     <Compile Include="ErrorEventArgs.cs" />
     <Compile Include="IControllable.cs" />
     <Compile Include="AirplainSimulatorKeyboardController.cs" />
     <Compile Include="AirplainSimulator.cs" />
     <Compile Include="AirplainSimulatorBuilder.cs" />
     <Compile Include="ModelDecreaseHeightException.cs" />
+    <Compile Include="ModelParametersException.cs" />
     <Compile Include="ModelTurboDecreaseHeightException.cs" />
     <Compile Include="ModelDecreaseSpeedException.cs" />
     <Compile Include="ModelHeightException.cs" />
@@ -73,6 +80,8 @@
     <Compile Include="PenaltyPointsEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimulatorControls.cs" />
+    <Compile Include="SimulatorMaxPenaltyPointsException.cs" />
+    <Compile Include="SimulatorPenaltyPointsException.cs" />
     <Compile Include="UnfitToFlyException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

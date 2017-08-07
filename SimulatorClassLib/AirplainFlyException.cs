@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace SimulatorClassLib
 {
     /// <summary>
-    /// Airplain can't fly exception.
+    /// Airplain fly exception.
     /// </summary>
     [Serializable]
     internal class AirplainFlyException : Exception
@@ -13,18 +13,15 @@ namespace SimulatorClassLib
         {
         }
 
-        public AirplainFlyException(string message)
-            : base(message)
+        public AirplainFlyException(string message) : base(message)
         {
         }
 
-        public AirplainFlyException(string message, Exception innerException)
-            : base(message, innerException)
+        public AirplainFlyException(string message, Exception innerException) : base(message, innerException)
         {
         }
 
-        protected AirplainFlyException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
+        protected AirplainFlyException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }

@@ -13,18 +13,15 @@ namespace SimulatorClassLib
         {
         }
 
-        public AddPenaltyPointsException(string message)
-            : base(message)
+        public AddPenaltyPointsException(string message) : base(message)
         {
         }
 
-        public AddPenaltyPointsException(string message, Exception innerException)
-            : base(message, innerException)
+        public AddPenaltyPointsException(string message, Exception innerException) : base(message, innerException)
         {
         }
 
-        protected AddPenaltyPointsException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
+        protected AddPenaltyPointsException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }

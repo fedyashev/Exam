@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace SimulatorClassLib
 {
     /// <summary>
-    /// Simulator penalty points exception.
+    /// Simulator penalty points expeption.
     /// </summary>
     [Serializable]
     internal class SimulatorPenaltyPointsException : Exception
@@ -13,18 +13,15 @@ namespace SimulatorClassLib
         {
         }
 
-        public SimulatorPenaltyPointsException(string message)
-            : base(message)
+        public SimulatorPenaltyPointsException(string message) : base(message)
         {
         }
 
-        public SimulatorPenaltyPointsException(string message, Exception innerException)
-            : base(message, innerException)
+        public SimulatorPenaltyPointsException(string message, Exception innerException) : base(message, innerException)
         {
         }
 
-        protected SimulatorPenaltyPointsException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
+        protected SimulatorPenaltyPointsException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }

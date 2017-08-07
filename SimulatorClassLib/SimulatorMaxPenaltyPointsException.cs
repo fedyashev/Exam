@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace SimulatorClassLib
 {
     /// <summary>
-    /// Model turbo increase speed exception.
+    /// Simulator penalty points exception.
     /// </summary>
     [Serializable]
     internal class SimulatorMaxPenaltyPointsException : Exception
@@ -13,18 +13,15 @@ namespace SimulatorClassLib
         {
         }
 
-        public SimulatorMaxPenaltyPointsException(string message)
-            : base(message)
+        public SimulatorMaxPenaltyPointsException(string message) : base(message)
         {
         }
 
-        public SimulatorMaxPenaltyPointsException(string message, Exception innerException)
-            : base(message, innerException)
+        public SimulatorMaxPenaltyPointsException(string message, Exception innerException) : base(message, innerException)
         {
         }
 
-        protected SimulatorMaxPenaltyPointsException(SerializationInfo info, StreamingContext context)
-            : base(info, context)
+        protected SimulatorMaxPenaltyPointsException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }

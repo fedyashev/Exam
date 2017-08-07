@@ -276,7 +276,6 @@ namespace SimulatorClassLib
                     }
                 }
                 catch (DispatcherChangeStateException ex) when (ex.InnerException is AirplainCrashException)
-                //catch (AirplainCrashException ex)
                 {
                     OnError(ex.Message);
                     OnFailSimulation();

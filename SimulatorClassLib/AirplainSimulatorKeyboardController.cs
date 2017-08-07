@@ -42,7 +42,7 @@ namespace SimulatorClassLib
         /// <returns>Number of action.</returns>
         public int GetControlAction()
         {
-            var key = Console.ReadKey(true);
+            var key = Console.ReadKey(false);
             var modifier = (key.Modifiers & ConsoleModifiers.Shift);
             var keyStr = key.Key.ToString() + (modifier != 0 ? String.Format("+{0}", modifier.ToString()) : "");
             return GetKey(keyStr);
