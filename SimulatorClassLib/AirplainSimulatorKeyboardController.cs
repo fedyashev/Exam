@@ -20,10 +20,18 @@ namespace SimulatorClassLib
         {
             switch (keyStr)
             {
-                case "D1": return SimulatorControls.startNewSimulation;
-                case "D2": return AirplainSimulatorControls.AddDispatcher;
-                case "D3": return AirplainSimulatorControls.RemoveDispatcher;
-                case "D0": return SimulatorControls.exitSimulation;
+                case "NumPad1":
+                case "D1":
+                    return SimulatorControls.startNewSimulation;
+                case "NumPad2": 
+                case "D2":
+                    return AirplainSimulatorControls.AddDispatcher;
+                case "NumPad3":
+                case "D3":
+                    return AirplainSimulatorControls.RemoveDispatcher;
+                case "NumPad0":
+                case "D0":
+                    return SimulatorControls.exitSimulation;
                 case "UpArrow": return SimulatorControls.increaseHeight;
                 case "DownArrow": return SimulatorControls.decreaseHeight;
                 case "RightArrow": return SimulatorControls.increaseSpeed;
@@ -42,7 +50,7 @@ namespace SimulatorClassLib
         /// <returns>Number of action.</returns>
         public int GetControlAction()
         {
-            var key = Console.ReadKey(false);
+            var key = Console.ReadKey(true);
             var modifier = (key.Modifiers & ConsoleModifiers.Shift);
             var keyStr = key.Key.ToString() + (modifier != 0 ? String.Format("+{0}", modifier.ToString()) : "");
             return GetKey(keyStr);

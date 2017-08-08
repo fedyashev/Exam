@@ -52,6 +52,7 @@
     <Compile Include="AirplianSimulatorConsoleView.cs" />
     <Compile Include="Dispatcher.cs" />
     <Compile Include="DispatcherChangeStateException.cs" />
+    <Compile Include="DispatcherCountException.cs" />
     <Compile Include="DispatcherException.cs" />
     <Compile Include="DispatcherMaxObjectSpeedException.cs" />
     <Compile Include="DispatcherNameException.cs" />
